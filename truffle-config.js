@@ -27,6 +27,9 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require("truffle-hdwallet-provider");
+const mnemonic = "chalk rigid item submit poverty age pattern congress cigar poem else load";
+const rinkebyUrl = "https://rinkeby.infura.io/v3/7ecb4b78d58c4a43ae7b3954a9f2a192";
 
 module.exports = {
   /**
@@ -50,6 +53,11 @@ module.exports = {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 9545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
+    },
+    rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic, rinkebyUrl),     // Localhost (default: none)
+      gas: 5500000,            // Standard Ethereum port (default: none)
+      network_id: "4",       // Any network (default: none)
     },
 
     // Another network with more advanced options...
@@ -83,7 +91,7 @@ module.exports = {
 
   // Set default mocha options here, use special reporters etc.
   mocha: {
-    // timeout: 100000
+    timeout: 100000
   },
 
   // Configure your compilers
